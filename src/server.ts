@@ -11,8 +11,8 @@ import fs from 'fs';
 const writer = {
     error: chalk.bold.red
 };
-const port = process.env.PORT || 8080;
 export function start(config: config) {
+    const port = config.port || 8080;
     let app = express();
 
     if (!config.routes) {
@@ -120,4 +120,5 @@ interface config {
     };
     pluginPaths?: string | string[];
     mockData?: {[key: string]: any};
+    port: number;
 }
