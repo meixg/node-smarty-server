@@ -22,15 +22,17 @@
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "ts-node": "^8.5.2",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "semantic-release": "^15.13.31"
   },
   "scripts": {
     "build": "rm -rf dist && gulp",
-    "dev": "rm -rf dist && gulp dev"
+    "dev": "rm -rf dist && gulp dev",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meixg/node-smarty-server.git"
+    "url": "https://github.com/meixg/node-smarty-server.git"
   },
   "keywords": [
     "smarty",
