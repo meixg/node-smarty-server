@@ -14,6 +14,8 @@ gulp.task('ts', () =>
 
 gulp.task('default', gulp.parallel(['php', 'ts']));
 
-gulp.task('watch', () => 
-	gulp.watch('src/**/*.ts', gulp.series('default'))
-)
+gulp.task('watch', () =>
+	gulp.watch(['src/**/*.ts', 'src/**/*.php'], gulp.series('default'))
+);
+
+gulp.task('dev', gulp.series('default', 'watch'));

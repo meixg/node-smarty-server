@@ -22,7 +22,8 @@
     "typescript": "^3.7.2"
   },
   "scripts": {
-    "build": "rm -rf dist && gulp"
+    "build": "rm -rf dist && gulp",
+    "dev": "rm -rf dist && gulp dev"
   },
   "repository": {
     "type": "git",
