@@ -33,6 +33,10 @@ export function cgi({
 
         const matchedRoute = match(url);
 
+        if (typeof mockData === 'function') {
+            mockData = mockData(url);
+        }
+
         if (!matchedRoute) {
             next();
             return;
@@ -188,7 +192,7 @@ export function cgi({
                 path.resolve(__dirname, './server.php'),
                 templatePath,
                 pluginPaths ? JSON.stringify(pluginPaths) : '',
-                JSON.stringify(mockData)
+                typeof mockData === 'string' ? mockData : JSON.stringify(mockData)
             ],
             {
                 env: env
