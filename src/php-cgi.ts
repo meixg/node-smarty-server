@@ -32,27 +32,30 @@ export function cgi({
         let url = URL.parse(req.url);
 
         const matchedRoute = match(url);
-
-        if (typeof mockData === 'function') {
-            mockData = mockData(url);
-        }
-
         if (!matchedRoute) {
             next();
             return;
         }
 
+        let data;
+        if (typeof mockData === 'function') {
+            data = mockData(url);
+        }
+        else {
+            data = mockData;
+        }
+
         const templatePath = path.join(templateRootPath, matchedRoute.templatePath);
 
         if (serverFile && fs.existsSync(serverFile)) {
-            execute(req, res, next, url, serverFile, templatePath);
+            execute(req, res, next, url, serverFile, templatePath, data);
             return;
         }
 
         let phpScript = path.join(templateRootPath, url.pathname);
 
         if (fs.existsSync(phpScript)) {
-            execute(req, res, next, url, phpScript, templatePath);
+            execute(req, res, next, url, phpScript, templatePath, data);
             return;
         }
 
@@ -60,7 +63,7 @@ export function cgi({
 
     };
 
-    function execute(req: Request, res: Response, next, url: URL.UrlWithStringQuery, serverFile: string, templatePath: string) {
+    function execute(req: Request, res: Response, next, url: URL.UrlWithStringQuery, serverFile: string, templatePath: string, data: any) {
 
         let i = req.url.indexOf('.php');
         let pathinfo = i > 0 ? url.pathname.substring(i + 4) : url.pathname
@@ -192,7 +195,7 @@ export function cgi({
                 path.resolve(__dirname, './server.php'),
                 templatePath,
                 pluginPaths ? JSON.stringify(pluginPaths) : '',
-                typeof mockData === 'string' ? mockData : JSON.stringify(mockData)
+                typeof data === 'string' ? data : JSON.stringify(data)
             ],
             {
                 env: env
