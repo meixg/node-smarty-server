@@ -5,6 +5,7 @@
   "main": "bin/index.js",
   "dependencies": {
     "chalk": "^3.0.0",
+    "commander": "^4.0.1",
     "express": "^4.17.1",
     "opn": "^6.0.0"
   },
@@ -21,7 +22,7 @@
     "typescript": "^3.7.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist && gulp"
   },
   "repository": {
     "type": "git",
