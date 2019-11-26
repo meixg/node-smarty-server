@@ -1,8 +1,11 @@
 {
   "name": "smarty-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "smarty server",
-  "main": "bin/index.js",
+  "main": "dist/server.js",
+  "bin": {
+    "smarty-server": "bin/index.js"
+  },
   "dependencies": {
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
