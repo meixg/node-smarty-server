@@ -6,8 +6,6 @@ import open from 'opn';
 import chalk from 'chalk';
 import fs from 'fs';
 
-
-
 const writer = {
     error: chalk.bold.red
 };
