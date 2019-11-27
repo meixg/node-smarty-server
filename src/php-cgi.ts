@@ -195,7 +195,8 @@ export function cgi({
                 path.resolve(__dirname, './server.php'),
                 templatePath,
                 pluginPaths ? JSON.stringify(pluginPaths) : '',
-                typeof data === 'string' ? data : JSON.stringify(data)
+                typeof data === 'string' ? data : JSON.stringify(data),
+                templateRootPath
             ],
             {
                 env: env

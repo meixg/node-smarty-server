@@ -1,9 +1,9 @@
 <?php
-function init_smarty($mockDataStr = null, $pluginPaths = null, $delimiters = null) {
+function init_smarty($mockDataStr = null, $pluginPaths = null, $delimiters = null, $templateRootPath) {
     $smarty = new Smarty;
 
     // $smarty->setTemplateDir(__DIR__ . '/../smarty/templates/');
-    $smarty->setTemplateDir('/home/meixg/work/baidu/hpbfe/superlanding/output/template');
+    $smarty->setTemplateDir($templateRootPath);
     $smarty->setCompileDir(__DIR__ . '/../smarty/templates_c/');
     $smarty->setConfigDir(__DIR__ . '/../smarty/configs/');
     $smarty->setCacheDir(__DIR__ . '/../smarty/cache/');

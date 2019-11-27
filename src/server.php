@@ -10,6 +10,7 @@ $request = $_SERVER['REQUEST_URI'];
 $templatePath = $argv[1];
 $pluginPaths = $argv[2];
 $mockDataStr = $argv[3];
+$templateRootPath = $argv[4];
 if (isset($pluginPaths)) {
     $pluginPaths = json_decode($pluginPaths);
 }
@@ -18,6 +19,6 @@ if (empty($templatePath)) {
     return false;
 }
 
-$smarty = init_smarty($mockDataStr, $pluginPaths);
+$smarty = init_smarty($mockDataStr, $pluginPaths, null, $templateRootPath);
 
 echo $smarty->fetch($templatePath);
